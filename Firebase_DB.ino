@@ -15,11 +15,11 @@
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-#define WIFI_SSID "ZONG MBB-E5573-475C"
+#define WIFI_SSID "<<YourWifi>>"
 #define WIFI_PASSWORD "29742974"
 
 // Insert Firebase project API Key
-#define API_KEY "AIzaSyB7mDG9vPjcjASXlGoSxeBOGjJM6SugfjM"
+#define API_KEY "<<YourApiKey>>"
 
 // Insert Authorized Username and Corresponding Password
 #define USER_EMAIL "anjum.pafkiet@gmail.com"

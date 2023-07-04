@@ -2,11 +2,11 @@
 #include <WiFiClient.h>
 #include <ESP8266HTTPClient.h>
 #include <ArduinoJson.h>
-const char* ssid = "ZONG MBB-E5573-475C";
+const char* ssid = "<<YourWifi>>";
 const char* password = "";
 const char* city = "Karachi";
 const char* countryCode = "pk";
-const char* apiKey = "101c4d5b3fca35438f7a816123b35784";
+const char* apiKey = "<<getYourApiKey>>";
 void setup() {
   Serial.begin(115200);
   WiFi.begin(ssid, password);

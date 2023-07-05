@@ -2,14 +2,14 @@
 
 SoftwareSerial mySerial(2, 3);
 Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
-uint8_t id;
+uint8_t id;  // Variable to Read Input from Serial Monitor
 void setup() {
   Serial.begin(9600);
   while (!Serial) {
     delay(1);
   }
 
-  finger.begin(57600);
+  finger.begin(57600);  // Open Serial Communication at Baud Rate 57600
 
   if (finger.verifyPassword()) {
     Serial.println("Found fingerprint sensor!");

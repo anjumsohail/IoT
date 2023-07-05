@@ -111,7 +111,7 @@ byte sendCommand(byte command, byte param1 = 0, byte param2 = 0, byte param3 = 0
   0x01,                          // Header byte 2
   param1, param2, param3, param4, // Parameters for the command
   command,                       // Command byte
-  param1 ^ param2 ^ param3 ^ param4 ^ command,  // Checksum byte
+  param1 ^ param2 ^ param3 ^ param4 ^ command,  // Checksum byte using XOR (^) operator 
   0xFF, 0xFF, 0xFF, 0xFF          // Tail bytes
 };
 
@@ -123,6 +123,7 @@ Parameters: The param1, param2, param3, and param4 variables represent the param
 Command byte: The command variable represents the specific command you want to send to the fingerprint sensor. It specifies the operation you want to perform, such as enrollment, verification, or matching.
 
 Checksum byte: The checksum byte is calculated by performing an XOR operation (^) on param1, param2, param3, param4, and command. The checksum is used to verify the integrity of the packet during transmission. It ensures that the received packet is not corrupted.
+XOR is a bitwise operation that compares corresponding bits of two operands and returns a new value where each bit is the result of the XOR operation on the corresponding bits of the operands.
 
 Tail bytes: The tail bytes 0xFF are used to mark the end of the packet.
 

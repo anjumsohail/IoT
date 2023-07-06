@@ -65,8 +65,11 @@ Serial.println ("Message sent succesfully");
 void RecieveMessage()
 {
 Serial.println ("Receiving Messeges");
+// Enable the SMS text mode
+SIM900A.println("AT+CMGF=1");
 delay (1000);
-SIM900A.println("AT+CNMI=2,2,0,0,0"); // Eeceiving Mode Enabled
+// Set SIM900 to forward received SMS to Arduino
+SIM900A.println("AT+CNMI=2,2,0,0,0"); 
 delay(1000);
 Serial.write ("Messege Received Sucessfully");
 }

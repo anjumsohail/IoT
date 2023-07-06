@@ -7,14 +7,23 @@ void setup()
 SIM900A.begin(9600); // GSM Module Baud rate – communication speed
 Serial.begin(9600); // Baud rate of Serial Monitor in the IDE app
 Serial.println ("Text Messege Module Ready  Verified");
-delay(100);
+delay(1000);
 Serial.println ("Type s to send message or r to receive message");
 }
 
 
 void loop()
 {
-if (Serial.available()>0)
+ 
+  // Check if the SIM900 module has responded
+  if (SIM900A.available()) {
+    // Read the response from the SIM900 module
+    String response = SIM900A.readString();
+    // Check if the response contains "OK"
+    if (response.indexOf("OK") != -1) {
+      Serial.println("SIM card is properly inserted.");  
+      Serial.println ("Type s to send message or r to receive message");
+      if (Serial.available()>0)
 switch(Serial.read())
 {
 case 's':
@@ -24,10 +33,15 @@ case 'r':
 RecieveMessage();
 break;
 }
-
-
 if (SIM900A.available()>0)
 Serial.write(SIM900A.read());
+      
+    } else {
+      Serial.println("SIM card is not inserted or not properly inserted.");
+    }
+  } else {
+    Serial.println("No response from the SIM900 module.");
+  }
 }
 
 

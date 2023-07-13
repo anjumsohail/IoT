@@ -73,4 +73,13 @@ delay (1000);
 SIM900A.println("AT+CNMI=2,2,0,0,0"); // Receiving Mode Enabled
 delay(1000);
 
+ if (SIM900A.available() > 0) {
+    // Read the SMS message
+    String sms = SIM900A.readString();
+
+    // Display the received SMS on the serial monitor
+    Serial.println("Received SMS:");
+    Serial.println(sms);
+  }
+
 }

@@ -1,5 +1,5 @@
 #include <SoftwareSerial.h>
-SoftwareSerial SIM900A(2,3);
+SoftwareSerial SIM900A(2,3); // 2 is Rx while 3 is Tx
 
 
 void setup()
@@ -8,13 +8,9 @@ SIM900A.begin(9600); // GSM Module Baud rate – communication speed
 Serial.begin(9600); // Baud rate of Serial Monitor in the IDE app
 Serial.println ("Text Messege Module Ready  Verified");
 delay(1000);
-Serial.println ("Type s to send message or r to receive message");
-}
-
-
-void loop()
-{
- 
+SIM900A.println("AT");
+  // Wait for a response from the SIM900 module
+  delay(500);
   // Check if the SIM900 module has responded
   if (SIM900A.available()) {
     // Read the response from the SIM900 module
@@ -22,8 +18,21 @@ void loop()
     // Check if the response contains "OK"
     if (response.indexOf("OK") != -1) {
       Serial.println("SIM card is properly inserted.");  
-      Serial.println ("Type s to send message or r to receive message");
-      if (Serial.available()>0)
+    } else {
+      Serial.println("SIM card is not inserted or not properly inserted.");
+    }
+  } else {
+    Serial.println("No response from the SIM900 module.");
+  }
+
+Serial.println ("Type s to send message or r to receive message");
+SIM900A.println("AT+CMGF=1"); //Text Mode initialisation
+}
+
+
+void loop()
+{
+if (Serial.available()>0)
 switch(Serial.read())
 {
 case 's':
@@ -33,22 +42,17 @@ case 'r':
 RecieveMessage();
 break;
 }
+
+
 if (SIM900A.available()>0)
 Serial.write(SIM900A.read());
-      
-    } else {
-      Serial.println("SIM card is not inserted or not properly inserted.");
-    }
-  } else {
-    Serial.println("No response from the SIM900 module.");
-  }
 }
 
 
 void SendMessage()
 {
 Serial.println ("Sending Message please wait….");
-SIM900A.println("AT+CMGF=1"); //Text Mode initialisation
+
 delay(1000);
 Serial.println ("Set SMS Number");
 SIM900A.println("AT+CMGS=\"+923180224024\"\r"); // Receiver’s Mobile Number
@@ -65,11 +69,8 @@ Serial.println ("Message sent succesfully");
 void RecieveMessage()
 {
 Serial.println ("Receiving Messeges");
-// Enable the SMS text mode
-SIM900A.println("AT+CMGF=1");
 delay (1000);
-// Set SIM900 to forward received SMS to Arduino
-SIM900A.println("AT+CNMI=2,2,0,0,0"); 
+SIM900A.println("AT+CNMI=2,2,0,0,0"); // Receiving Mode Enabled
 delay(1000);
-Serial.write ("Messege Received Sucessfully");
+
 }

@@ -15,6 +15,7 @@ def read_dht_sensor():
 
     # Return values as None if reading fails
     if humidity is None or temperature is None:
+        print("Sensor not connected")
         return None, None
 
     # Round the values to 2 decimal places

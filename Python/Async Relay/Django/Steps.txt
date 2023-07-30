@@ -1,0 +1,33 @@
+Step 1: Install Django
+	sudo pip3 install Django
+Step 2: Create a Django Project 
+	django-admin startproject rpi_web_server
+
+Step 3: Create App
+	cd rpi_web_server
+	python3 manage.py startapp control_app
+
+
+Step 3: Update Django Settings
+	Open the settings.py file within the rpi_web_server 
+	folder and add 'control_app' to the 
+	INSTALLED_APPS list:
+	
+Step 4: Create URLs
+		1. create a urls.py file within the control_app folder
+	and Copy Contents
+		2. Modify urls.py files with rpi_web_server Folder.
+
+Step 5: Create views
+		Open views.py in control_app Folder
+		Copy Contents
+		
+Step 6: Create HTML Template:
+		create a templates folder within the control_app 
+		folder. Inside the templates folder, Copy contents
+		
+Step 7 : Run the Development server and App
+		python3 manage.py runserver 0.0.0.0:8080
+
+		
+		

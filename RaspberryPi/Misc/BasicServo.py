@@ -8,6 +8,7 @@ GPIO.setmode(GPIO.BCM)
 servo_pin = 18
 
 # Set the PWM frequency (you may need to adjust this value to suit your servo)
+# https://blog.wokwi.com/learn-servo-motor-using-wokwi-logic-analyzer/
 pwm_frequency = 50
 max_duty =12.5
 min_duty =2.5

@@ -9,7 +9,8 @@ servo_pin = 18
 
 # Set the PWM frequency (you may need to adjust this value to suit your servo)
 pwm_frequency = 50
-
+max_duty =12.5
+min_duty =2.5
 # Set the angle range supported by your servo (usually 0 to 180 degrees)
 angle_range = 180
 

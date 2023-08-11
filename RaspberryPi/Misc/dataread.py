@@ -1,3 +1,4 @@
+# sudo apt install bluetooth bluez bluez-tools libbluetooth-dev
 import bluetooth
 # Importing the GPIO library to use the GPIO pins of Raspberry pi
 import RPi.GPIO as GPIO

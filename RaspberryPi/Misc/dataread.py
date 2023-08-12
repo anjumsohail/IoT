@@ -1,8 +1,6 @@
 # sudo apt install bluetooth bluez bluez-tools libbluetooth-dev
-# sudo apt-get install bluetooth libbluetooth-dev
-# sudo python3 -m 
 #  pip install pybluez
-
+# Get Bluetooth Mac Address of Pi : hciconfig | grep 'BD Address' | cut -d' ' -f3
 import bluetooth
 # Importing the GPIO library to use the GPIO pins of Raspberry pi
 import RPi.GPIO as GPIO

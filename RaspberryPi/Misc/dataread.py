@@ -25,9 +25,10 @@ print("Client:", client)
 try:
         while True:
                 # Receivng the data.
-                data = client.recv(1024) # 1024 is the buffer size.
+                byte_data = client.recv(1024) # 1024 is the buffer size.
+                data=byte_data.decode('utf-8')
                 print(data)
-
+                client.send('Data Received.')
                 if data == "1":
                         GPIO.output(led_pin, True)
                         send_data = "Light On "
@@ -38,8 +39,9 @@ try:
                         send_data = "Type 1 or 0 "
                 # Sending the data.
                 client.send(send_data)
-except:
+except Exception as e:
         # Making all the output pins LOW
+        print('Exception Raised',e)
         GPIO.cleanup()
         # Closing the client and server connection
         client.close()

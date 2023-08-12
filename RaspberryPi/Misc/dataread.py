@@ -1,4 +1,4 @@
-# sudo apt install bluetooth bluez bluez-tools libbluetooth-dev
+# sudo apt install bluetooth bluez bluez-tools libbluetooth-dev blueman
 #  pip install pybluez
 # Get Bluetooth Mac Address of Pi : hciconfig | grep 'BD Address' | cut -d' ' -f3
 import bluetooth

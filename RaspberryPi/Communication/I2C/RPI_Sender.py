@@ -1,3 +1,6 @@
+# Arduino Pins A4 (SDA), A5 (SCL)
+# RaspberryPi Pins SDA: GPIO2 (BCM pin 2)  SCL: GPIO3 (BCM pin 3)
+
 import smbus
 import time
 

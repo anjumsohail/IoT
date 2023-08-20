@@ -1,5 +1,8 @@
 # Arduino Pins A4 (SDA), A5 (SCL)
 # RaspberryPi Pins SDA: GPIO2 (BCM pin 2)  SCL: GPIO3 (BCM pin 3)
+# Enable I2C via sudo raspi-config
+# sudo apt-get install python3-smbus
+# Optional sudo usermod -aG i2c your_username
 
 import smbus
 import time
